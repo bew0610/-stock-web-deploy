@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Stock System</title></head>
+<body>
+<h2>Stock Items</h2>
+<a href="/logout">Logout</a>
+<form method="post" action="/add">
+  <input name="name" placeholder="ชื่อสินค้า">
+  <input name="sn" placeholder="S/N">
+  <input name="qty" type="number" placeholder="จำนวน">
+  <input name="unit" placeholder="หน่วย">
+  <button type="submit">เพิ่ม</button>
+</form>
+<table border="1">
+<tr><th>ID</th><th>ชื่อ</th><th>S/N</th><th>จำนวน</th><th>หน่วย</th><th>ประวัติ</th></tr>
+{% for item in items %}
+<tr>
+  <td>{{ item.id }}</td>
+  <td>{{ item.name }}</td>
+  <td>{{ item.sn }}</td>
+  <td>{{ item.qty }}</td>
+  <td>{{ item.unit }}</td>
+  <td>{{ item.history[-1] }}</td>
+</tr>
+{% endfor %}
+</table>
+<a href="/export">Export to Excel</a>
+</body>
+</html>
